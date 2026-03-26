@@ -1,0 +1,31 @@
+.places-preview {
+  display: grid;
+  gap: 16px;
+  margin-top: 20px;
+  text-align: left;
+}
+
+.place-item {
+  padding: 18px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+}
+
+.place-item h3 {
+  margin: 4px 0 8px;
+  font-size: 1.05rem;
+}
+
+.place-item p {
+  margin: 0;
+  color: #475569;
+}
+
+.place-date {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #e11d48 !important;
+}
