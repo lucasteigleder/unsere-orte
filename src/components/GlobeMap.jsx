@@ -1,9 +1,10 @@
-import { useState } from "react"
+import { useState, useRef } from "react"
 import Map, { Marker } from "react-map-gl/maplibre"
 import "maplibre-gl/dist/maplibre-gl.css"
 
 function GlobeMap({ places, selectedPlace, onSelectPlace }) {
   const [zoom, setZoom] = useState(1.2)
+  const mapRef = useRef(null)
 
   return (
     <div className="globe-wrapper">
@@ -18,6 +19,7 @@ function GlobeMap({ places, selectedPlace, onSelectPlace }) {
         attributionControl={false}
         onMove={(evt) => setZoom(evt.viewState.zoom)}
         style={{ width: "100%", height: "100%" }}
+        ref={mapRef}
       >
         {places.map((place) => (
           <Marker
@@ -30,7 +32,15 @@ function GlobeMap({ places, selectedPlace, onSelectPlace }) {
               className={`pin-button ${
                 selectedPlace?.id === place.id ? "active" : ""
               }`}
-              onClick={() => onSelectPlace(place)}
+              onClick={() => {
+  onSelectPlace(place)
+
+  mapRef.current?.flyTo({
+    center: [place.coordinates.lng, place.coordinates.lat],
+    zoom: 5,
+    duration: 3000,
+  })
+}}
               aria-label={place.name}
             >
               <span
