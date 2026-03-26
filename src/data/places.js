@@ -8,21 +8,21 @@ const places = [
       "Ich war so nervös, aber gleichzeitig wusste ich direkt, dass das etwas Besonderes ist.",
     emoji: "☕",
     coordinates: {
-      lng: 10.0,
-      lat: 51.0,
+      lng: 8.70795688914508,
+      lat: 49.41187033202423,
     },
   },
   {
     id: 2,
     name: "Lieblingsort",
-    date: "Sommer 2024",
+    date: "Sommer 2025",
     description: "Ein Ort, der sich nach uns anfühlt.",
     memory:
       "Hier konnten wir einfach wir selbst sein. Kein Stress, kein Druck – nur wir zwei.",
     emoji: "🌿",
     coordinates: {
-      lng: 12.0,
-      lat: 48.0,
+      lng: 15.220723707079312,
+      lat: 44.26359670101335,
     },
   },
   {
@@ -33,8 +33,8 @@ const places = [
     memory: "Und das ist erst der Anfang von allem, was noch kommt ❤️",
     emoji: "✨",
     coordinates: {
-      lng: 2.35,
-      lat: 48.86,
+      lng: 14.435459857143384,
+      lat: 50.074608434761565,
     },
   },
 ]

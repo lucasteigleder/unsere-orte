@@ -1,7 +1,10 @@
+import { useState } from "react"
 import Map, { Marker } from "react-map-gl/maplibre"
 import "maplibre-gl/dist/maplibre-gl.css"
 
 function GlobeMap({ places, selectedPlace, onSelectPlace }) {
+  const [zoom, setZoom] = useState(1.2)
+
   return (
     <div className="globe-wrapper">
       <Map
@@ -13,6 +16,7 @@ function GlobeMap({ places, selectedPlace, onSelectPlace }) {
         mapStyle="https://demotiles.maplibre.org/style.json"
         projection="globe"
         attributionControl={false}
+        onMove={(evt) => setZoom(evt.viewState.zoom)}
         style={{ width: "100%", height: "100%" }}
       >
         {places.map((place) => (
@@ -29,7 +33,15 @@ function GlobeMap({ places, selectedPlace, onSelectPlace }) {
               onClick={() => onSelectPlace(place)}
               aria-label={place.name}
             >
-              <span className="pin-dot">{place.emoji}</span>
+              <span
+                className="pin-dot"
+                style={{
+                  transform: `scale(${Math.max(0.6, zoom / 3)})`,
+                  opacity: zoom > 2 ? 1 : 0.4,
+                }}
+              >
+                {place.emoji}
+              </span>
             </button>
           </Marker>
         ))}
