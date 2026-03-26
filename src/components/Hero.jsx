@@ -34,6 +34,14 @@ function Hero() {
       ✕
     </button>
 
+    <div className="place-image-wrapper">
+      <img
+        src={selectedPlace.image}
+        alt={selectedPlace.name}
+        className="place-image"
+      />
+    </div>
+
     <p className="place-date">{selectedPlace.date}</p>
     <h2>
       {selectedPlace.emoji} {selectedPlace.name}

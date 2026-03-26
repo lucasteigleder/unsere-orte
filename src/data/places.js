@@ -1,3 +1,7 @@
+import erstesDateImage from "../assets/erstes-date.jpg"
+import lieblingsortImage from "../assets/lieblingsort.jpg"
+import naechsterOrtImage from "../assets/naechster-ort.jpg"
+
 const places = [
   {
     id: 1,
@@ -7,6 +11,7 @@ const places = [
     memory:
       "Ich war so nervös, aber gleichzeitig wusste ich direkt, dass das etwas Besonderes ist.",
     emoji: "☕",
+    image: erstesDateImage,
     coordinates: {
       lng: 8.70795688914508,
       lat: 49.41187033202423,
@@ -20,6 +25,7 @@ const places = [
     memory:
       "Hier konnten wir einfach wir selbst sein. Kein Stress, kein Druck – nur wir zwei.",
     emoji: "🌿",
+    image: lieblingsortImage,
     coordinates: {
       lng: 15.220723707079312,
       lat: 44.26359670101335,
@@ -32,6 +38,7 @@ const places = [
     description: "Hier wartet noch eine Überraschung auf uns.",
     memory: "Und das ist erst der Anfang von allem, was noch kommt ❤️",
     emoji: "✨",
+    image: naechsterOrtImage,
     coordinates: {
       lng: 14.435459857143384,
       lat: 50.074608434761565,
