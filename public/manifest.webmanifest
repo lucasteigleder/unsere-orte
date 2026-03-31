@@ -1,0 +1,22 @@
+{
+  "name": "Unsere kleine Welt",
+  "short_name": "Unsere Welt",
+  "description": "Unsere persönliche Weltkarte mit Erinnerungen und Lieblingsorten.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#fdf2f8",
+  "theme_color": "#fdf2f8",
+  "icons": [
+    {
+      "src": "/pwa-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/pwa-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
