@@ -20,7 +20,7 @@ const places = [
   },
   {
     id: 2,
-    name: "Lieblingsort",
+    name: "Kroatien",
     date: "Sommer 2025",
     description: "Unser erster gemeinsamer Urlaub.",
     memory:

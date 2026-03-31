@@ -1,10 +1,25 @@
-import { useState, useRef } from "react"
+import { forwardRef, useImperativeHandle, useRef, useState } from "react"
 import Map, { Marker } from "react-map-gl/maplibre"
 import "maplibre-gl/dist/maplibre-gl.css"
 
-function GlobeMap({ places, selectedPlace, onSelectPlace }) {
+const GlobeMap = forwardRef(function GlobeMap(
+  { places, selectedPlace, onSelectPlace },
+  ref
+) {
   const [zoom, setZoom] = useState(1.2)
   const mapRef = useRef(null)
+
+  const flyToPlace = (place) => {
+    mapRef.current?.flyTo({
+      center: [place.coordinates.lng, place.coordinates.lat],
+      zoom: 5,
+      duration: 3000,
+    })
+  }
+
+  useImperativeHandle(ref, () => ({
+    flyToPlace,
+  }))
 
   return (
     <div className="globe-wrapper">
@@ -35,12 +50,7 @@ function GlobeMap({ places, selectedPlace, onSelectPlace }) {
               }`}
               onClick={() => {
                 onSelectPlace(place)
-
-                mapRef.current?.flyTo({
-                  center: [place.coordinates.lng, place.coordinates.lat],
-                  zoom: 5,
-                  duration: 3000,
-                })
+                flyToPlace(place)
               }}
               aria-label={place.name}
             >
@@ -62,6 +72,6 @@ function GlobeMap({ places, selectedPlace, onSelectPlace }) {
       </Map>
     </div>
   )
-}
+})
 
 export default GlobeMap
