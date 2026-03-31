@@ -9,6 +9,7 @@ function GlobeMap({ places, selectedPlace, onSelectPlace }) {
   return (
     <div className="globe-wrapper">
       <Map
+        ref={mapRef}
         initialViewState={{
           longitude: 10,
           latitude: 20,
@@ -19,7 +20,6 @@ function GlobeMap({ places, selectedPlace, onSelectPlace }) {
         attributionControl={false}
         onMove={(evt) => setZoom(evt.viewState.zoom)}
         style={{ width: "100%", height: "100%" }}
-        ref={mapRef}
       >
         {places.map((place) => (
           <Marker
@@ -29,29 +29,33 @@ function GlobeMap({ places, selectedPlace, onSelectPlace }) {
             anchor="bottom"
           >
             <button
+              type="button"
               className={`pin-button ${
                 selectedPlace?.id === place.id ? "active" : ""
               }`}
               onClick={() => {
-  onSelectPlace(place)
+                onSelectPlace(place)
 
-  mapRef.current?.flyTo({
-    center: [place.coordinates.lng, place.coordinates.lat],
-    zoom: 5,
-    duration: 3000,
-  })
-}}
+                mapRef.current?.flyTo({
+                  center: [place.coordinates.lng, place.coordinates.lat],
+                  zoom: 5,
+                  duration: 3000,
+                })
+              }}
               aria-label={place.name}
             >
-              <span
-                className="pin-dot"
+              <div
+                className="pin"
                 style={{
-                  transform: `scale(${Math.max(0.6, zoom / 3)})`,
-                  opacity: zoom > 2 ? 1 : 0.4,
+                  transform: `scale(${Math.max(0.65, zoom / 3)})`,
+                  opacity: zoom > 2 ? 1 : 0.45,
                 }}
               >
-                {place.emoji}
-              </span>
+                <div className="pin-head">
+                  <span className="pin-emoji">{place.emoji}</span>
+                </div>
+                <div className="pin-tip" />
+              </div>
             </button>
           </Marker>
         ))}
